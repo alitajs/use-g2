@@ -1,0 +1,57 @@
+{
+  "name": "use-g2",
+  "version": "0.0.1",
+  "description": "React hooks for G2",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "es/index.d.ts",
+  "scripts": {
+    "build": "npm run build:es && npm run build:lib",
+    "build:es": "rm -rf es/ && tsc --build tsconfig.json",
+    "build:lib": "rm -rf lib/ && tsc --build tsconfig.es5.json",
+    "lint": "npm run build:es && eslint . --ext '.js,.jsx,.ts,.tsx'",
+    "lint-fix": "npm run lint:script -- --fix",
+    "prettier:ts": "prettier ./**/*.ts --write",
+    "prettier:js": "prettier ./**/*.js --write --loglevel=error"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged",
+    "commit-msg": "node scripts/verifyCommit.js"
+  },
+  "devDependencies": {
+    "@umijs/fabric": "^2.0.3",
+    "chalk": "^3.0.0",
+    "lint-staged": "^10.0.8",
+    "prettier": "^1.19.0",
+    "typescript": "^3.8.0",
+    "yorkie": "^2.0.0"
+  },
+  "dependencies": {
+    "@antv/g2": "^4.0.4",
+    "tslib": "^1.11.1"
+  },
+  "sideEffects": [],
+  "lint-staged": {
+    "*.{md,json}": [
+      "prettier --write"
+    ],
+    "*.js?(x)": [
+      "eslint",
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "eslint",
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "files": [
+    "es",
+    "lib"
+  ],
+  "keywords": [
+    "g2",
+    "react",
+    "hook"
+  ]
+}
