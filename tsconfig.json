@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "alwaysStrict": true,
     "baseUrl": ".",
     "declaration": true,
     "experimentalDecorators": true,
     "importHelpers": true,
     "module": "ESNext",
+    "moduleResolution": "Node",
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
@@ -17,6 +19,5 @@
     "strictNullChecks": true,
     "strictPropertyInitialization": true,
     "target": "ES2015"
-  },
-  "include": ["src"]
+  }
 }

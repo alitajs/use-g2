@@ -4,5 +4,6 @@ module.exports = {
     'consistent-return': 0,
     'no-bitwise': 0,
     'no-unused-expressions': 0,
+    'import/no-unresolved': [2, { ignore: ['react'] }],
   },
 };

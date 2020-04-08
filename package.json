@@ -1,6 +1,6 @@
 {
   "name": "use-g2",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "React hooks for G2",
   "license": "MIT",
   "main": "lib/index.js",
@@ -13,13 +13,15 @@
     "lint": "npm run build:es && eslint . --ext '.js,.jsx,.ts,.tsx'",
     "lint-fix": "npm run lint:script -- --fix",
     "prettier:ts": "prettier ./**/*.ts --write",
-    "prettier:js": "prettier ./**/*.js --write --loglevel=error"
+    "prettier:js": "prettier ./**/*.js --write --loglevel=error",
+    "prepublish": "npm run lint && npm run build"
   },
   "gitHooks": {
     "pre-commit": "lint-staged",
     "commit-msg": "node scripts/verifyCommit.js"
   },
   "devDependencies": {
+    "@types/react": "^16.9.32",
     "@umijs/fabric": "^2.0.3",
     "chalk": "^3.0.0",
     "lint-staged": "^10.0.8",
@@ -31,6 +33,12 @@
     "@antv/g2": "^4.0.4",
     "tslib": "^1.11.1"
   },
+  "peerDependencies": {
+    "react": "^16.8.0"
+  },
+  "optionalDependencies": {
+    "@antv/data-set": "^0.11.4"
+  },
   "sideEffects": [],
   "lint-staged": {
     "*.{md,json}": [
@@ -39,10 +47,6 @@
     "*.js?(x)": [
       "eslint",
       "prettier --write"
-    ],
-    "*.ts?(x)": [
-      "eslint",
-      "prettier --parser=typescript --write"
     ]
   },
   "files": [
