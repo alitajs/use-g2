@@ -1,6 +1,6 @@
 # use-g2
 
-## Install
+## Installation
 
 ```bash
 $ npm install use-g2 --save
