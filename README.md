@@ -1,5 +1,21 @@
 # use-g2
 
+## Install
+
+```bash
+$ npm install use-g2 --save
+or
+$ yarn add use-g2
+```
+
+`@antv/data-set` is an optional dependency. If you use hooks related to it, it is better to add it to your dependencies:
+
+```bash
+$ npm install @antv/data-set --save
+or
+$ yarn add @antv/data-set
+```
+
 ## Usage
 
 ```tsx
