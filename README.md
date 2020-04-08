@@ -19,7 +19,7 @@ $ yarn add @antv/data-set
 ## Usage
 
 ```tsx
-import React, { useMemo } from 'react';
+import React from 'react';
 import { useG2Container, useG2Source } from 'use-g2';
 
 export default () => {
