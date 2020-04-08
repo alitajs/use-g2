@@ -7,9 +7,23 @@ export function useG2Source<T extends G2.View, U extends any[]>(
   isEqual?: (prev: U, curr: U) => boolean
 ): T {
   const prevSource = usePrevious(source);
+
+  if (!prevSource || !isEqual?.(prevSource, source)) {
+    chart.data(source);
+  }
+
+  return chart;
+}
+
+export function useG2SourceImmediately<T extends G2.View, U extends any[]>(
+  chart: T,
+  source: U,
+  isEqual?: (prev: U, curr: U) => boolean
+): T {
+  const prevSource = usePrevious(source);
   useSingleton(() => chart.data(source));
 
-  if (prevSource && (!isEqual?.(prevSource, source))) {
+  if (prevSource && !isEqual?.(prevSource, source)) {
     chart.changeData(source);
   }
 
