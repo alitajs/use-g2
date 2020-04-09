@@ -1,6 +1,7 @@
 import type { ChartCfg } from '@antv/g2/lib/interface';
 import { Chart } from '@antv/g2';
 import { Ref, useCallback, useEffect, useRef } from 'react';
+import { useG2ChartSize } from './config';
 import { useSingleton } from './use';
 
 export function useG2Container<T extends HTMLElement = HTMLDivElement>(
@@ -23,6 +24,8 @@ export function useG2Container<T extends HTMLElement = HTMLDivElement>(
 
     connectedRef.current = !!element;
   }, []);
+
+  useG2ChartSize(chart, config, config.autoFit);
 
   useEffect(() => {
     if (connectedRef.current) {

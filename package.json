@@ -1,6 +1,6 @@
 {
   "name": "use-g2",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "React hooks for G2",
   "license": "MIT",
   "main": "lib/index.js",
@@ -57,5 +57,12 @@
     "g2",
     "react",
     "hook"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/alitajs/use-g2/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alitajs/use-g2"
+  }
 }
