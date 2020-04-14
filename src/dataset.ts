@@ -16,6 +16,16 @@ export function useDataSet<T extends Record<string, unknown>>(initialState: T) {
   return [dataset, getState, setState] as const;
 }
 
+/**
+ * @param dataset Created by `new DateSet()` or `useDataSet()`.
+ *
+ * @param source Source data.
+ * When `useDataView()` is used with `useG2Chart()`, `source` can be processed uniformly:
+ * ```ts
+ * const dv = useDataView(dataset);
+ * useG2Chart({ dv, source });
+ * ```
+ */
 export function useDataView<T extends any[]>(dataset: DataSet, source?: T) {
   const dataview = useMemo(() => dataset.createView(), [dataset]);
 
@@ -24,6 +34,16 @@ export function useDataView<T extends any[]>(dataset: DataSet, source?: T) {
   return dataview;
 }
 
+/**
+ * @param initialState
+ *
+ * @param source Source data.
+ * When `useDataView()` is used with `useG2Chart()`, `source` can be processed uniformly:
+ * ```ts
+ * const dv = useDataView(dataset);
+ * useG2Chart({ dv, source });
+ * ```
+ */
 export function useDataSetView<T extends Record<string, unknown>, U extends any[]>(
   initialState: T,
   source?: U,

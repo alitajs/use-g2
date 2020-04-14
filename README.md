@@ -22,40 +22,17 @@ $ yarn add @antv/data-set
 
 ```tsx
 import React from 'react';
-import { useG2Container, useG2Source } from 'use-g2';
+import { useG2Chart } from 'use-g2';
 
 export default () => {
-  const [ref, chart] = useG2Container({ height: 200 });
-
-  chart.point().position('name*age');
-
-  useG2Source(chart, [
+  const source = [
     { name: 'foo', age: 20 },
     { name: 'bar', age: 22 },
-  ]);
+  ];
 
-  return <div ref={ref} />;
-};
-```
+  const [ref, chart] = useG2Chart({ height: 200, source });
 
-### Update Config
-
-```tsx
-import React from 'react';
-import { useG2ChartSize, useG2Container, useG2Source } from 'use-g2';
-
-interface MyProps {
-  parentWidth: number;
-}
-
-export default (props: MyProps) => {
-  const { parentWidth } = props;
-  const [ref, chart] = useG2Container();
-
-  useG2Source(chart, []);
-  // When the width of the parent element is greater than 320, the size are adaptive,
-  // otherwise 320 is used as the minimum width.
-  useG2ChartSize(chart, { width: 320 }, parentWidth > 320);
+  chart.point().position('name*age');
 
   return <div ref={ref} />;
 };
@@ -65,24 +42,24 @@ export default (props: MyProps) => {
 
 ```tsx
 import React from 'react';
-import { useDataSetView, useG2Container, useG2SourceDataView } from 'use-g2';
+import { useDataSetView, useG2Chart } from 'use-g2';
 
 export default () => {
-  const [ref, chart] = useG2Container({ height: 200 });
-  const [dataview] = useDataSetView({}, [
+  const source = [
     { name: 'foo', age: 20 },
     { name: 'bar', age: 22 },
-  ]);
+  ];
+
+  const [dv] = useDataSetView({});
+  const [ref, chart] = useG2Chart({ dv, height: 200, source });
 
   chart.point().position('name*age');
-  dataview.transform({
+  dv.transform({
     type: 'filter',
     callback(row) {
       return row.age < 21;
     },
   });
-
-  useG2SourceDataView(chart, dataview);
 
   return <div ref={ref} />;
 };

@@ -1,6 +1,6 @@
 {
   "name": "use-g2",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "React hooks for G2",
   "license": "MIT",
   "main": "lib/index.js",
