@@ -1,3 +1,4 @@
+import type { View as DataView } from '@antv/data-set/lib/view';
 import type * as G2 from '@antv/g2';
 import { usePrevious, useSingleton } from './use';
 
@@ -36,4 +37,26 @@ export function useG2SourceImmediately<T extends G2.View, U extends any[]>(
   }
 
   return false;
+}
+
+/**
+ * @returns whether the data has been updated.
+ */
+export function useG2SourceDataView<T extends G2.View, U extends any[]>(
+  chart: T,
+  dataview: DataView,
+  isEqual?: (prev: U, curr: U) => boolean
+): boolean {
+  return useG2Source(chart, dataview.rows as U, isEqual);
+}
+
+/**
+ * @returns whether the data has been updated.
+ */
+export function useG2SourceDataViewImmediately<T extends G2.View, U extends any[]>(
+  chart: T,
+  dataview: DataView,
+  isEqual?: (prev: U, curr: U) => boolean
+): boolean {
+  return useG2SourceImmediately(chart, dataview.rows as U, isEqual);
 }
